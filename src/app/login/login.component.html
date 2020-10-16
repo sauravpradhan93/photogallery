@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-title>Sign In</mat-card-title>
+  <form (ngSubmit)="logIn(f)" #f="ngForm">
+<mat-form-field>
+  <mat-label>Email</mat-label>
+  <input
+  matInput
+  type="email"
+  id="email"
+  ngModel
+  name="email"
+  required>
+</mat-form-field><br/>
+<mat-form-field>
+  <mat-label>Password</mat-label>
+  <input
+  matInput
+  type="password"
+  id="password"
+  ngModel
+  name="password"
+  required>
+</mat-form-field><br/>
+<button mat-raised-button
+ color="primary"
+  [disabled]="!f.form.valid"
+type="submit">Log In</button>
+<button
+type="button"
+mat-raised-button
+>Register</button>
+  </form>
+</mat-card>
