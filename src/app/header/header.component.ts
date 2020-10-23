@@ -23,7 +23,7 @@ ngOnInit(){
 
   }
   openUpload(){
-    this.router.navigate['upload'];
+    this.router.navigate(['upload']);
   }
 }
 

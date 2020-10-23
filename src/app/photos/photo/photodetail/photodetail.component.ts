@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {PhotoService} from '../Service/photo.service'
+import {Component, Input, OnInit} from '@angular/core';
+import {PhotoService} from '../../../Service/photo.service';
+
 @Component({
   selector: 'app-photodetail',
   templateUrl: './photodetail.component.html',
@@ -8,8 +9,7 @@ import {PhotoService} from '../Service/photo.service'
 
 export class PhotoDetailComponent implements OnInit{
 constructor(private photoService:PhotoService){}
-
+@Input()photoModel:any[];
 ngOnInit(){
-this.photoService.getPhotoDetailList();
-}
+  }
 }

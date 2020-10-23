@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from "@angular/material/dialog";
 
 import{AngularFireModule} from '@angular/fire';
 import{ AngularFireDatabaseModule} from '@angular/fire/database';
@@ -16,11 +17,12 @@ import { AngularFireStorageModule } from '@angular/fire/storage';;
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { PhotoGalleryComponent } from './photo/photogallery.component';
+import { PhotoGalleryComponent } from '../app/photos/photo/photogallery.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
-import { PhotoDetailComponent } from './photodetail/photodetail.component';
+import { PhotoDetailComponent } from './photos/photo/photodetail/photodetail.component';
 import{UploadComponent} from './upload/upload.component';
+import {DialogComponent} from './Dialog/dialog.component';
 
 import { PhotoService } from './Service/photo.service';
 import{AuthenticationService} from './Service/authentication.service';
@@ -36,7 +38,8 @@ import { environment } from 'src/environments/environment';
     HeaderComponent,
     LoginComponent,
     PhotoDetailComponent,
-    UploadComponent
+    UploadComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,11 +55,13 @@ import { environment } from 'src/environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
 AngularFireAuthModule,
-AngularFireStorageModule
+AngularFireStorageModule,
+MatDialogModule
   ],
   providers: [AuthenticationService,
   PhotoService,
 UploadService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

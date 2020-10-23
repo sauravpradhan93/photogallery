@@ -4,7 +4,7 @@
     <a href="#" class="navbar-brand">Testing</a>
   </div>
   <ul class="navbar navbar-nav">
-   <div *ngIf="(user|async)?.uid"><button mat-raised-button color="primary" (click)="openUpload()">Upload</button>
+   <div *ngIf="(user|async)?.uid"><button mat-raised-button (click)="openUpload()">Upload</button>
   </div>
   </ul>
 <ul class="nav navbar-nav navbar-right">

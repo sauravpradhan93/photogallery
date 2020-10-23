@@ -1,5 +1,7 @@
-export interface PhotoModel{
-  $key:String;
-  name:string;
-  imgurl:string
+export class PhotoModel{
+ imgurl:string
+
+ constructor( private int,private imageUrl){
+   this.imgurl=imageUrl;
+ }
 }

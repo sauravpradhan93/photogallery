@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {UploadService} from '../Service/upload.service';
-import {UploadModel} from '../Model/uploadmodel.model';
+import * as firebase from 'firebase/app';
 import * as _ from 'lodash';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
-import{finalize} from "rxjs/operators";
+import{finalize, timestamp} from "rxjs/operators";
 import { PhotoService } from '../Service/photo.service';
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -22,10 +21,13 @@ formTemplate=new FormGroup({
   imageUrl:new FormControl('',Validators.required)
 })
 
-constructor(private storage:AngularFireStorage,private photoService:PhotoService){}
+constructor(private storage:AngularFireStorage,private photoService:PhotoService, private router:Router){}
 
 ngOnInit(){
   this.formReset();
+}
+openGallery(){
+  this.router.navigate(['photogallery']);
 }
 
 preview(event:any){
@@ -43,10 +45,12 @@ else{
 
 onSubmit(formValue){
 this.submitted=true;
+
 if(this.formTemplate.valid){
   var filePath=`${this.selectedImage.name.split('.').slice(0,-1).join('.')}_${new Date().getTime()}`;
   const fileRef=this.storage.ref(filePath);
-  this.storage.upload(filePath,this.selectedImage).snapshotChanges()
+  this.storage.upload(filePath,this.selectedImage
+    ).snapshotChanges()
   .pipe(
     finalize(()=>{
       fileRef.getDownloadURL().subscribe((url)=>{
@@ -68,5 +72,7 @@ formReset(){
   this.selectedImage=null;
   this.imgSrc="";
   this.submitted=false;
+
 }
+
 }

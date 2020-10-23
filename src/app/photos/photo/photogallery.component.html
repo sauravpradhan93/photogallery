@@ -1,0 +1,6 @@
+<div *ngIf="photos">
+  <ul *ngFor="let i of array">
+<li><img mat-card-image [src]="photos[i].imageUrl" class="img-fluid" (click)="onSubmit()"></li>
+</ul>
+  </div>
+
