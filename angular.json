@@ -65,7 +65,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "cloud:build"
+            "browserTarget": "cloud:build",
+            "host":"0.0.0.0",
+            "port":8080
           },
           "configurations": {
             "production": {
@@ -77,6 +79,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "cloud:build"
+
           }
         },
         "test": {

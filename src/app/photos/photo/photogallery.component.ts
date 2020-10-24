@@ -13,6 +13,8 @@ import {DialogComponent} from '../../Dialog/dialog.component';
 export class PhotoGalleryComponent implements OnInit {
 photos:any[];
 array:any[];
+startIndex=0;
+endIndex=10;
   constructor(private photoService:PhotoService,public dialog:MatDialog) { }
 
   ngOnInit(){
@@ -29,6 +31,10 @@ const dialogRef=this.dialog.open(DialogComponent);
 dialogRef.afterClosed().subscribe(result => {
   console.log(`Dialog result: ${result}`);
 });
+}
+updateIndex(pageIndex){
+  this.startIndex=pageIndex*5;
+  this.endIndex=this.startIndex+5;
 }
 }
 
